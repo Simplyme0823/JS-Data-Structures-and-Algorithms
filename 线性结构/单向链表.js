@@ -142,8 +142,9 @@ function linkedList() {
             }
             previes.next = current.next
         }
-        this.length -= - 1
-        return current.data
+        this.length -=  1
+
+        //return current.data
     }
 
     linkedList.prototype.remove = function(data){
@@ -160,6 +161,30 @@ function linkedList() {
     }
 }
 
+linkedList.prototype.print=function(){
+    current = this.head
+    const stack =[]
+    while(current){
+        stack.unshift(current.data)
+        current = current.next
+    }
+    stack.forEach(item=>{
+        console.log(item)
+    })
+}
+
+linkedList.prototype.print_ = function(){
+    digui(this.head)
+}
+
+const digui= node => {
+    console.log(node.data)
+    if(node.next){
+        digui(node.next)
+    }
+}
+
+
 //测试代码
 //1.创建
 var list = new linkedList()
@@ -174,4 +199,7 @@ list.update(0, 'noah')
 console.log(list)
 list.removeAt(0)
 console.log(list)
+console.log('-------------')
+//list.print()
 
+list.print_()
